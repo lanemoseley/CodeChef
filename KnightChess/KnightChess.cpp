@@ -50,129 +50,280 @@ In the first test case, the king is in cannot move to any valid position In seco
 */
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
-bool inCheck(int a, int b, int x, int y);
+
+struct knights{
+    coords c;
+    vector<coords> range;
+};
+
+struct coords{
+    int x;
+    int y;
+
+    bool operator==(coords &c);
+    void operator=(coords &c);
+};
 
 int main()
 {
-    int cases, num, xKing, yKing, *xKnight, *yKnight, i, j;
+    vector<knights> k;
+    knights temp_knight;
+    coords temp, temp_k, king;
+    int cases, num, i, j, m;
+    bool checkMate = false;
+    bool check = false;
 
     cin >> cases;
     
     while (cases--)
     {
         cin >> num;
-    
-        xKnight = new (nothrow) int[num];
-        yKnight = new (nothrow) int[num];
 
-        if (xKnight == nullptr || yKnight == nullptr)
-        {
-            delete[] xKnight;
-            delete[] yKnight;
-        }
-
+        // getting knight locations
         for (i = 0; i < num; ++i)
         {
-            cin >> xKnight[i];
+            cin >> temp.x;
             cin.ignore(1);
-            cin >> yKnight[i];
+            cin >> temp.y;
+
+            temp_knight.c = temp;
+
+            // setting range
+
+            // right, up
+            temp_k = temp;
+            temp_k.x += 2;
+            temp_k.y += 1;
+
+            temp_knight.range.push_back(temp_k);
+
+            // right, down
+            temp_k = temp;
+            temp_k.x += 2;
+            temp_k.y -= 1;
+
+            temp_knight.range.push_back(temp_k);
+
+            // left, up
+            temp_k = temp;
+            temp_k.x -= 2;
+            temp_k.y += 1;
+
+            temp_knight.range.push_back(temp_k);
+
+            // left, down
+            temp_k = temp;
+            temp_k.x -= 2;
+            temp_k.y -= 1;
+
+            temp_knight.range.push_back(temp_k);
+
+            // up, right
+            temp_k = temp;
+            temp_k.x += 1;
+            temp_k.y += 2;
+
+            temp_knight.range.push_back(temp_k);
+
+            // up, left
+            temp_k = temp;
+            temp_k.x -= 1;
+            temp_k.y += 2;
+
+            temp_knight.range.push_back(temp_k);
+
+            // down, right
+            temp_k = temp;
+            temp_k.x += 1;
+            temp_k.y -= 2;
+
+            temp_knight.range.push_back(temp_k);
+
+            // down, left
+            temp_k = temp;
+            temp_k.x -= 1;
+            temp_k.y -= 2;
+
+            temp_knight.range.push_back(temp_k);
+
+
+            k.push_back(temp_knight);
         }
 
-        cin >> xKing;
+        // getting king location
+        cin >> king.x;
         cin.ignore(1);
-        cin >> yKing;
+        cin >> king.y;
 
-        for (i = 0; i < num; ++i)
+        // in check?
+        for (i = 0; i < k.size() && !check; ++i)
         {
-            if ( inCheck(xKing, yKing, xKnight[i], yKnight[i]) )
+            for (j = 0; j < k[i].range.size() && !check; ++j)
             {
-                for (j = 0; j < num; ++j)
+                // in check?
+                if (k[i].range[j] == king)
                 {
-                    if ( inCheck(xKing + 1, yKing, xKnight[j], yKnight[j] ) )
-                    {
-                        cout << "YES";
-                    }
-
-                    else if ( inCheck(xKing - 1, yKing, xKnight[j], yKnight[j] ) )
-                    {
-                        cout << "YES";
-                    }
-
-                    else if ( inCheck(xKing, yKing + 1, xKnight[j], yKnight[j] ) )
-                    {
-                        cout << "YES";
-                    }
-
-                    else if ( inCheck(xKing, yKing - 1, xKnight[j], yKnight[j] ) )
-                    {
-                        cout << "YES";
-                    }
-
-                    else if ( inCheck(xKing + 1, yKing + 1, xKnight[j], yKnight[j] ) )
-                    {
-                        cout << "YES";
-                    }
-
-                    else if ( inCheck(xKing + 1, yKing - 1, xKnight[j], yKnight[j] ) )
-                    {
-                        cout << "YES";
-                    }
-
-                    else if ( inCheck(xKing - 1, yKing + 1, xKnight[j], yKnight[j] ) )
-                    {
-                        cout << "YES";
-                    }
-
-                    else if ( inCheck(xKing - 1, yKing - 1, xKnight[j], yKnight[j] ) )
-                    {
-                        cout << "YES";
-                    }
-
-                    else
-                    {
-                        cout << "NO";
-                    }
+                    check = true;
                 }
             }
+        }
 
-            else
+        // in checkmate?
+        check = false;
+        
+        temp_k.x = king.x + 1;
+        temp_k.y = king.y;
+
+        for (i = 0; i < k.size() && !check; ++i)
+        {
+            for (j = 0; j < k[i].range.size() && !check; ++j)
             {
-                cout << "NO";
+                // in check?
+                if (k[i].range[j] == temp_k)
+                {
+                    check = true;
+                }
             }
         }
+
+        check = false;
+        
+        temp_k.x = king.x - 1;
+        temp_k.y = king.y;
+
+        for (i = 0; i < k.size() && !check; ++i)
+        {
+            for (j = 0; j < k[i].range.size() && !check; ++j)
+            {
+                // in check?
+                if (k[i].range[j] == temp_k)
+                {
+                    check = true;
+                }
+            }
+        }
+
+        check = false;
+        
+        temp_k.x = king.x;
+        temp_k.y = king.y + 1;
+
+        for (i = 0; i < k.size() && !check; ++i)
+        {
+            for (j = 0; j < k[i].range.size() && !check; ++j)
+            {
+                // in check?
+                if (k[i].range[j] == temp_k)
+                {
+                    check = true;
+                }
+            }
+        }
+
+        check = false;
+        
+        temp_k.x = king.x;
+        temp_k.y = king.y - 1;
+
+        for (i = 0; i < k.size() && !check; ++i)
+        {
+            for (j = 0; j < k[i].range.size() && !check; ++j)
+            {
+                // in check?
+                if (k[i].range[j] == temp_k)
+                {
+                    check = true;
+                }
+            }
+        }
+
+        check = false;
+        
+        temp_k.x = king.x + 1;
+        temp_k.y = king.y + 1;
+
+        for (i = 0; i < k.size() && !check; ++i)
+        {
+            for (j = 0; j < k[i].range.size() && !check; ++j)
+            {
+                // in check?
+                if (k[i].range[j] == temp_k)
+                {
+                    check = true;
+                }
+            }
+        }
+
+        check = false;
+        
+        temp_k.x = king.x + 1;
+        temp_k.y = king.y - 1;
+
+        for (i = 0; i < k.size() && !check; ++i)
+        {
+            for (j = 0; j < k[i].range.size() && !check; ++j)
+            {
+                // in check?
+                if (k[i].range[j] == temp_k)
+                {
+                    check = true;
+                }
+            }
+        }
+
+        check = false;
+        
+        temp_k.x = king.x - 1;
+        temp_k.y = king.y + 1;
+
+        for (i = 0; i < k.size() && !check; ++i)
+        {
+            for (j = 0; j < k[i].range.size() && !check; ++j)
+            {
+                // in check?
+                if (k[i].range[j] == temp_k)
+                {
+                    check = true;
+                }
+            }
+        }
+
+        check = false;
+        
+        temp_k.x = king.x - 1;
+        temp_k.y = king.y - 1;
+
+        for (i = 0; i < k.size() && !check; ++i)
+        {
+            for (j = 0; j < k[i].range.size() && !check; ++j)
+            {
+                // in check?
+                if (k[i].range[j] == temp_k)
+                {
+                    check = true;
+                }
+            }
+        }
+
+        if (check)
+            cout << "YES";
+        else
+            cout << "NO";
     }
 
     return 0;
 }
 
-bool inCheck(int a, int b, int x, int y)
+bool coords::operator==(coords &c)
 {
-    // check left up and down
-    if ( (x - 2 == a && y + 1 == b) || (x - 2 == a && y - 1 == b) )
-    {
-        return true;
-    }
+    return ((x == c.x && y == c.y));
+}
 
-    // check right up and down
-    if ( (x + 2 == a && y + 1 == b) || (x + 2 == a && y - 1 == b) )
-    {
-        return true;
-    }
-    
-    // check up left and right
-    if ( (y + 2 == b && x - 1 == a) || (y + 2 == b && x + 1 == a) )
-    {
-        return true;
-    }
-    
-    // check down left
-    if ( (y - 2 == b && x - 1 == a) || (y - 2 == b && x + 1 == a) )
-    {
-        return true;
-    }
-
-    return false;
-
+void coords::operator=(coords &c)
+{
+    x = c.x;
+    y = c.y;
 }

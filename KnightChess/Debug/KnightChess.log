@@ -1,2 +1,89 @@
 ﻿  KnightChess.cpp
-  KnightChess.vcxproj -> C:\Users\7496386\source\repos\lanemoseley\CodeChef\KnightChess\Debug\KnightChess.exe
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(58): error C3646: 'c': unknown override specifier
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(58): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(59): error C2065: 'coords': undeclared identifier
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(59): error C2923: 'std::vector': 'coords' is not a valid template type argument for parameter '_Ty'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(59): error C2903: 'allocator': symbol is neither a class template nor a function template
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(59): error C3203: 'allocator': unspecialized class template can't be used as a template argument for template parameter '_Alloc', expected a real type
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(92): error C2039: 'c': is not a member of 'knights'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(57): note: see declaration of 'knights'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(101): error C2663: 'std::vector<_Ty,_Alloc>::push_back': 2 overloads have no legal conversion for 'this' pointer
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(108): error C2663: 'std::vector<_Ty,_Alloc>::push_back': 2 overloads have no legal conversion for 'this' pointer
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(115): error C2663: 'std::vector<_Ty,_Alloc>::push_back': 2 overloads have no legal conversion for 'this' pointer
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(122): error C2663: 'std::vector<_Ty,_Alloc>::push_back': 2 overloads have no legal conversion for 'this' pointer
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(129): error C2663: 'std::vector<_Ty,_Alloc>::push_back': 2 overloads have no legal conversion for 'this' pointer
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(136): error C2663: 'std::vector<_Ty,_Alloc>::push_back': 2 overloads have no legal conversion for 'this' pointer
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(143): error C2663: 'std::vector<_Ty,_Alloc>::push_back': 2 overloads have no legal conversion for 'this' pointer
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(150): error C2663: 'std::vector<_Ty,_Alloc>::push_back': 2 overloads have no legal conversion for 'this' pointer
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(162): warning C4018: '<': signed/unsigned mismatch
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(164): error C2662: '_Vector_alloc<_Alloc_types>::_Val_types::size_type std::vector<_Ty,_Alloc>::size(void) noexcept const': cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Ty,_Alloc> &'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(164): note: Reason: cannot convert from 'std::vector' to 'const std::vector<_Ty,_Alloc>'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(164): note: Conversion requires a second user-defined-conversion operator or constructor
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(167): error C2678: binary '[': no operator found which takes a left-hand operand of type 'std::vector' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1739): note: could be 'const _Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type) const'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1730): note: or       '_Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type)'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(167): note: while trying to match the argument list '(std::vector, int)'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(180): warning C4018: '<': signed/unsigned mismatch
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(182): error C2662: '_Vector_alloc<_Alloc_types>::_Val_types::size_type std::vector<_Ty,_Alloc>::size(void) noexcept const': cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Ty,_Alloc> &'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(182): note: Reason: cannot convert from 'std::vector' to 'const std::vector<_Ty,_Alloc>'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(182): note: Conversion requires a second user-defined-conversion operator or constructor
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(185): error C2678: binary '[': no operator found which takes a left-hand operand of type 'std::vector' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1739): note: could be 'const _Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type) const'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1730): note: or       '_Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type)'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(185): note: while trying to match the argument list '(std::vector, int)'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(197): warning C4018: '<': signed/unsigned mismatch
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(199): error C2662: '_Vector_alloc<_Alloc_types>::_Val_types::size_type std::vector<_Ty,_Alloc>::size(void) noexcept const': cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Ty,_Alloc> &'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(199): note: Reason: cannot convert from 'std::vector' to 'const std::vector<_Ty,_Alloc>'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(199): note: Conversion requires a second user-defined-conversion operator or constructor
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(202): error C2678: binary '[': no operator found which takes a left-hand operand of type 'std::vector' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1739): note: could be 'const _Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type) const'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1730): note: or       '_Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type)'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(202): note: while trying to match the argument list '(std::vector, int)'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(214): warning C4018: '<': signed/unsigned mismatch
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(216): error C2662: '_Vector_alloc<_Alloc_types>::_Val_types::size_type std::vector<_Ty,_Alloc>::size(void) noexcept const': cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Ty,_Alloc> &'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(216): note: Reason: cannot convert from 'std::vector' to 'const std::vector<_Ty,_Alloc>'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(216): note: Conversion requires a second user-defined-conversion operator or constructor
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(219): error C2678: binary '[': no operator found which takes a left-hand operand of type 'std::vector' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1739): note: could be 'const _Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type) const'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1730): note: or       '_Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type)'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(219): note: while trying to match the argument list '(std::vector, int)'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(231): warning C4018: '<': signed/unsigned mismatch
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(233): error C2662: '_Vector_alloc<_Alloc_types>::_Val_types::size_type std::vector<_Ty,_Alloc>::size(void) noexcept const': cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Ty,_Alloc> &'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(233): note: Reason: cannot convert from 'std::vector' to 'const std::vector<_Ty,_Alloc>'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(233): note: Conversion requires a second user-defined-conversion operator or constructor
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(236): error C2678: binary '[': no operator found which takes a left-hand operand of type 'std::vector' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1739): note: could be 'const _Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type) const'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1730): note: or       '_Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type)'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(236): note: while trying to match the argument list '(std::vector, int)'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(248): warning C4018: '<': signed/unsigned mismatch
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(250): error C2662: '_Vector_alloc<_Alloc_types>::_Val_types::size_type std::vector<_Ty,_Alloc>::size(void) noexcept const': cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Ty,_Alloc> &'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(250): note: Reason: cannot convert from 'std::vector' to 'const std::vector<_Ty,_Alloc>'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(250): note: Conversion requires a second user-defined-conversion operator or constructor
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(253): error C2678: binary '[': no operator found which takes a left-hand operand of type 'std::vector' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1739): note: could be 'const _Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type) const'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1730): note: or       '_Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type)'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(253): note: while trying to match the argument list '(std::vector, int)'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(265): warning C4018: '<': signed/unsigned mismatch
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(267): error C2662: '_Vector_alloc<_Alloc_types>::_Val_types::size_type std::vector<_Ty,_Alloc>::size(void) noexcept const': cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Ty,_Alloc> &'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(267): note: Reason: cannot convert from 'std::vector' to 'const std::vector<_Ty,_Alloc>'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(267): note: Conversion requires a second user-defined-conversion operator or constructor
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(270): error C2678: binary '[': no operator found which takes a left-hand operand of type 'std::vector' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1739): note: could be 'const _Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type) const'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1730): note: or       '_Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type)'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(270): note: while trying to match the argument list '(std::vector, int)'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(282): warning C4018: '<': signed/unsigned mismatch
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(284): error C2662: '_Vector_alloc<_Alloc_types>::_Val_types::size_type std::vector<_Ty,_Alloc>::size(void) noexcept const': cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Ty,_Alloc> &'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(284): note: Reason: cannot convert from 'std::vector' to 'const std::vector<_Ty,_Alloc>'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(284): note: Conversion requires a second user-defined-conversion operator or constructor
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(287): error C2678: binary '[': no operator found which takes a left-hand operand of type 'std::vector' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1739): note: could be 'const _Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type) const'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1730): note: or       '_Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type)'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(287): note: while trying to match the argument list '(std::vector, int)'
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(299): warning C4018: '<': signed/unsigned mismatch
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(301): error C2662: '_Vector_alloc<_Alloc_types>::_Val_types::size_type std::vector<_Ty,_Alloc>::size(void) noexcept const': cannot convert 'this' pointer from 'std::vector' to 'const std::vector<_Ty,_Alloc> &'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(301): note: Reason: cannot convert from 'std::vector' to 'const std::vector<_Ty,_Alloc>'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(301): note: Conversion requires a second user-defined-conversion operator or constructor
+c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(304): error C2678: binary '[': no operator found which takes a left-hand operand of type 'std::vector' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1739): note: could be 'const _Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type) const'
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.15.26726\include\vector(1730): note: or       '_Ty &std::vector<_Ty,_Alloc>::operator [](const _Vector_alloc<_Alloc_types>::_Val_types::size_type)'
+  c:\users\7496386\source\repos\lanemoseley\codechef\knightchess\knightchess.cpp(304): note: while trying to match the argument list '(std::vector, int)'
