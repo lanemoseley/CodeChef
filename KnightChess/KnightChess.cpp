@@ -54,6 +54,34 @@ using namespace std;
 
 int main()
 {
+    int cases, num, xKing, yKing, *xKnight, *yKnight, i;
+
+    cin >> cases;
     
+    while (cases--)
+    {
+        cin >> num;
+
+        xKnight = new (nothrow) int[num];
+        yKnight = new (nothrow) int[num];
+
+        if (xKnight == nullptr || yKnight == nullptr)
+        {
+            delete[] xKnight;
+            delete[] yKnight;
+        }
+
+        for (i = 0; i < num; ++i)
+        {
+            cin >> xKnight[i];
+            cin.ignore(1);
+            cin >> yKnight[i];
+        }
+
+        cin >> xKing;
+        cin.ignore(1);
+        cin >> yKing;
+
+    }
     return 0;
 }
