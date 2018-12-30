@@ -52,16 +52,18 @@ In the first test case, the king is in cannot move to any valid position In seco
 #include <iostream>
 using namespace std;
 
+bool inCheck(int a, int b, int x, int y);
+
 int main()
 {
-    int cases, num, xKing, yKing, *xKnight, *yKnight, i;
+    int cases, num, xKing, yKing, *xKnight, *yKnight, i, j;
 
     cin >> cases;
     
     while (cases--)
     {
         cin >> num;
-
+    
         xKnight = new (nothrow) int[num];
         yKnight = new (nothrow) int[num];
 
@@ -82,6 +84,95 @@ int main()
         cin.ignore(1);
         cin >> yKing;
 
+        for (i = 0; i < num; ++i)
+        {
+            if ( inCheck(xKing, yKing, xKnight[i], yKnight[i]) )
+            {
+                for (j = 0; j < num; ++j)
+                {
+                    if ( inCheck(xKing + 1, yKing, xKnight[j], yKnight[j] ) )
+                    {
+                        cout << "YES";
+                    }
+
+                    else if ( inCheck(xKing - 1, yKing, xKnight[j], yKnight[j] ) )
+                    {
+                        cout << "YES";
+                    }
+
+                    else if ( inCheck(xKing, yKing + 1, xKnight[j], yKnight[j] ) )
+                    {
+                        cout << "YES";
+                    }
+
+                    else if ( inCheck(xKing, yKing - 1, xKnight[j], yKnight[j] ) )
+                    {
+                        cout << "YES";
+                    }
+
+                    else if ( inCheck(xKing + 1, yKing + 1, xKnight[j], yKnight[j] ) )
+                    {
+                        cout << "YES";
+                    }
+
+                    else if ( inCheck(xKing + 1, yKing - 1, xKnight[j], yKnight[j] ) )
+                    {
+                        cout << "YES";
+                    }
+
+                    else if ( inCheck(xKing - 1, yKing + 1, xKnight[j], yKnight[j] ) )
+                    {
+                        cout << "YES";
+                    }
+
+                    else if ( inCheck(xKing - 1, yKing - 1, xKnight[j], yKnight[j] ) )
+                    {
+                        cout << "YES";
+                    }
+
+                    else
+                    {
+                        cout << "NO";
+                    }
+                }
+            }
+
+            else
+            {
+                cout << "NO";
+            }
+        }
     }
+
     return 0;
+}
+
+bool inCheck(int a, int b, int x, int y)
+{
+    // check left up and down
+    if ( (x - 2 == a && y + 1 == b) || (x - 2 == a && y - 1 == b) )
+    {
+        return true;
+    }
+
+    // check right up and down
+    if ( (x + 2 == a && y + 1 == b) || (x + 2 == a && y - 1 == b) )
+    {
+        return true;
+    }
+    
+    // check up left and right
+    if ( (y + 2 == b && x - 1 == a) || (y + 2 == b && x + 1 == a) )
+    {
+        return true;
+    }
+    
+    // check down left
+    if ( (y - 2 == b && x - 1 == a) || (y - 2 == b && x + 1 == a) )
+    {
+        return true;
+    }
+
+    return false;
+
 }
