@@ -1,5 +1,7 @@
 ﻿/*
 
+https://en.wikipedia.org/wiki/Monty_Hall_problem
+
 "An ideal problem has no test data." - aryanc403
 
 This is an interactive problem.
@@ -37,6 +39,24 @@ using namespace std;
 
 int main()
 {
+	int i;
+	int choice = 1;
+	int first_goat;
+
+	// first door choice
+	cout << choice << endl;
+
+	// first door with goat behind it
+	cin >> first_goat;
+	
+	// switching choice to last remaining door
+	for (i = 0; i < 3; ++i)
+	{
+		if (i + 1 != choice && i + 1 != first_goat)
+		{
+			cout << i + 1 << endl;
+		}
+	}
 
 	return 0;
 }
