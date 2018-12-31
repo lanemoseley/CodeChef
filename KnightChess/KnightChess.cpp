@@ -54,36 +54,57 @@ In the first test case, the king is in cannot move to any valid position In seco
 using namespace std;
 
 
-// structure for holding x, y coordinate pairs
+// structure for holding the coordinates of a given piece
 struct coords{
-    int x;
-    int y;
+	int x;
+	int y;
 
-    bool operator==(coords &c);
-    void operator=(coords &c);
+	bool operator==(coords &c);
+};
+
+// structure for holding the knight's location and range of movement
+class theKnight{
+
+public:
+	theKnight(int x = 0, int y = 0);
+	~theKnight();
+
+	vector<coords> possible_moves;
+
+private:
+	int max_choices = 8;
+	int range[8][2] = { {2, 1}, {2, -1}, {-2, 1}, {-2, -1}, {1, 2}, {1, -2}, {-1, 2}, {-1, -2} };
+
+	coords pos;
+};
+
+// structure for holding the king's location and range of movement
+class theKing{
+
+public:
+	theKing(int x = 0, int y = 0);
+	~theKing();
+
+	vector<coords> possible_moves;
+
+private:
+	int max_choices = 8;
+	int range[8][2] = { {0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1} };
+
+	coords pos;
 };
 
 
-// structure for holding a knights location and range of movement
-struct knights{
-    coords c;
-    vector<coords> range;
-};
 
 
 int main()
 {
-    vector<knights> k;
-    knights temp_knight;
-    coords temp1, temp2, king;
-    int cases, num;
-    unsigned int i, j, m;
-    bool checkMate = false;
-    bool check = false;
-
-    int knight_offsets[8][2] = { {2, 1}, {2, -1}, {-2, 1}, {-2, -1}, {1, 2}, {1, -2}, {-1, 2}, {-1, -2} };
-    int king_offsets[8][2] = { {0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1} };
-
+	unsigned int i, j;
+    int cases, num, temp_x, temp_y;
+	vector<theKnight> knights;
+	vector<coords> kings_moves, invalid_squares;
+	bool is_valid;
+	
     cin >> cases;
     
     while (cases--)
@@ -91,86 +112,112 @@ int main()
         cin >> num;
 
         // getting knight locations
-        for (i = 0; int(i) < num; ++i)
+        for (i = 0; (int) i < num; ++i)
         {
-            cin >> temp1.x;
+            cin >> temp_x;
             cin.ignore(1);
-            cin >> temp1.y;
+            cin >> temp_y;
 
-            temp_knight.c = temp1;
+			// initializing knight and putting the knight in a vector
+            theKnight kt(temp_x, temp_y);
 
-            // setting range
-            for (j = 0; j < 8; ++j)
-            {
-                temp2 = temp1;
-                temp2.x += knight_offsets[j][0];
-                temp2.y += knight_offsets[j][1];
-                temp_knight.range.push_back(temp2);
-            }
-
-            k.push_back(temp_knight);
+            knights.push_back(kt);
         }
 
         // getting king location
-        cin >> king.x;
+        cin >> temp_x;
         cin.ignore(1);
-        cin >> king.y;
+        cin >> temp_y;
 
-        // in check?
-        for (i = 0; i < k.size() && !check; ++i)
-        {
-            for (j = 0; j < k[i].range.size() && !check; ++j)
-            {
-                // in check?
-                if (k[i].range[j] == king)
-                {
-                    check = true;
-                }
-            }
-        }
+		// initializing king
+		theKing kg(temp_x, temp_y);
 
-        // in checkmate?
-        check = true;
-        for (i = 0; i < 8 && check; ++i)
-        {
-            check = false;
-        
-            temp1 = king;
-            temp1.x += king_offsets[i][0];
-            temp1.y += king_offsets[i][1];
+		// gathering all invalid squares
+		for (i = 0; i < knights.size(); ++i)
+		{
+			for (j = 0; j < knights[i].possible_moves.size(); ++j)
+			{
+				invalid_squares.push_back(knights[i].possible_moves[j]);
+			}
+		}
 
-            for (j = 0; j < k.size() && !check; ++j)
-            {
-                for (m = 0; m < k[j].range.size() && !check; ++m)
-                {
-                    // in check?
-                    if (k[j].range[m] == temp1)
-                    {
-                        check = true;
-                    }
-                }
-            }
-        }
-        
+		is_valid = false;
 
-        if (check)
-            cout << "YES";
-        else
-            cout << "NO";
+		for (i = 0; i < kg.possible_moves.size() && !is_valid; ++i)
+		{
+			is_valid = true;
+			for (j = 0; j < invalid_squares.size(); ++j)
+			{
+				if (invalid_squares[j] == kg.possible_moves[i])
+				{
+					// move invalid
+					is_valid = false;
+				}
+			}
+		}
+
+		if (is_valid)
+			cout << "NO" << endl;
+		else
+			cout << "YES" << endl;
     }
 
     return 0;
 }
 
 
-// overloaded operator functions
-bool coords::operator==(coords &c)
+
+
+// knight class functions
+theKnight::theKnight(int x, int y)
 {
-    return (x == c.x && y == c.y);
+	int i;
+	coords temp;
+	
+	pos.x = x;
+	pos.y = y;
+
+	for (i = 0; i < max_choices; ++i)
+    {
+		temp.x = pos.x + range[i][0];
+		temp.y = pos.y + range[i][1];
+
+		possible_moves.push_back(temp);
+    }
 }
 
-void coords::operator=(coords &c)
+theKnight::~theKnight()
 {
-    x = c.x;
-    y = c.y;
+
+}
+
+
+// king class functions
+theKing::theKing(int x, int y)
+{
+	int i;
+	coords temp;
+	
+	pos.x = x;
+	pos.y = y;
+
+	for (i = 0; i < max_choices; ++i)
+    {
+		temp.x = pos.x + range[i][0];
+		temp.y = pos.y + range[i][1];
+
+		possible_moves.push_back(temp);
+    }
+}
+
+theKing::~theKing()
+{
+
+}
+
+
+// overloaded operator for coords struct
+bool coords::operator==(coords &c)
+{
+	return (x == c.x && y == c.y);
 }
