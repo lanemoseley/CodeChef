@@ -54,11 +54,7 @@ In the first test case, the king is in cannot move to any valid position In seco
 using namespace std;
 
 
-struct knights{
-    coords c;
-    vector<coords> range;
-};
-
+// structure for holding x, y coordinate pairs
 struct coords{
     int x;
     int y;
@@ -67,14 +63,26 @@ struct coords{
     void operator=(coords &c);
 };
 
+
+// structure for holding a knights location and range of movement
+struct knights{
+    coords c;
+    vector<coords> range;
+};
+
+
 int main()
 {
     vector<knights> k;
     knights temp_knight;
-    coords temp, temp_k, king;
-    int cases, num, i, j, m;
+    coords temp1, temp2, king;
+    int cases, num;
+    unsigned int i, j, m;
     bool checkMate = false;
     bool check = false;
+
+    int knight_offsets[8][2] = { {2, 1}, {2, -1}, {-2, 1}, {-2, -1}, {1, 2}, {1, -2}, {-1, 2}, {-1, -2} };
+    int king_offsets[8][2] = { {0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1} };
 
     cin >> cases;
     
@@ -83,72 +91,22 @@ int main()
         cin >> num;
 
         // getting knight locations
-        for (i = 0; i < num; ++i)
+        for (i = 0; int(i) < num; ++i)
         {
-            cin >> temp.x;
+            cin >> temp1.x;
             cin.ignore(1);
-            cin >> temp.y;
+            cin >> temp1.y;
 
-            temp_knight.c = temp;
+            temp_knight.c = temp1;
 
             // setting range
-
-            // right, up
-            temp_k = temp;
-            temp_k.x += 2;
-            temp_k.y += 1;
-
-            temp_knight.range.push_back(temp_k);
-
-            // right, down
-            temp_k = temp;
-            temp_k.x += 2;
-            temp_k.y -= 1;
-
-            temp_knight.range.push_back(temp_k);
-
-            // left, up
-            temp_k = temp;
-            temp_k.x -= 2;
-            temp_k.y += 1;
-
-            temp_knight.range.push_back(temp_k);
-
-            // left, down
-            temp_k = temp;
-            temp_k.x -= 2;
-            temp_k.y -= 1;
-
-            temp_knight.range.push_back(temp_k);
-
-            // up, right
-            temp_k = temp;
-            temp_k.x += 1;
-            temp_k.y += 2;
-
-            temp_knight.range.push_back(temp_k);
-
-            // up, left
-            temp_k = temp;
-            temp_k.x -= 1;
-            temp_k.y += 2;
-
-            temp_knight.range.push_back(temp_k);
-
-            // down, right
-            temp_k = temp;
-            temp_k.x += 1;
-            temp_k.y -= 2;
-
-            temp_knight.range.push_back(temp_k);
-
-            // down, left
-            temp_k = temp;
-            temp_k.x -= 1;
-            temp_k.y -= 2;
-
-            temp_knight.range.push_back(temp_k);
-
+            for (j = 0; j < 8; ++j)
+            {
+                temp2 = temp1;
+                temp2.x += knight_offsets[j][0];
+                temp2.y += knight_offsets[j][1];
+                temp_knight.range.push_back(temp2);
+            }
 
             k.push_back(temp_knight);
         }
@@ -172,141 +130,28 @@ int main()
         }
 
         // in checkmate?
-        check = false;
-        
-        temp_k.x = king.x + 1;
-        temp_k.y = king.y;
-
-        for (i = 0; i < k.size() && !check; ++i)
+        check = true;
+        for (i = 0; i < 8 && check; ++i)
         {
-            for (j = 0; j < k[i].range.size() && !check; ++j)
+            check = false;
+        
+            temp1 = king;
+            temp1.x += king_offsets[i][0];
+            temp1.y += king_offsets[i][1];
+
+            for (j = 0; j < k.size() && !check; ++j)
             {
-                // in check?
-                if (k[i].range[j] == temp_k)
+                for (m = 0; m < k[j].range.size() && !check; ++m)
                 {
-                    check = true;
+                    // in check?
+                    if (k[j].range[m] == temp1)
+                    {
+                        check = true;
+                    }
                 }
             }
         }
-
-        check = false;
         
-        temp_k.x = king.x - 1;
-        temp_k.y = king.y;
-
-        for (i = 0; i < k.size() && !check; ++i)
-        {
-            for (j = 0; j < k[i].range.size() && !check; ++j)
-            {
-                // in check?
-                if (k[i].range[j] == temp_k)
-                {
-                    check = true;
-                }
-            }
-        }
-
-        check = false;
-        
-        temp_k.x = king.x;
-        temp_k.y = king.y + 1;
-
-        for (i = 0; i < k.size() && !check; ++i)
-        {
-            for (j = 0; j < k[i].range.size() && !check; ++j)
-            {
-                // in check?
-                if (k[i].range[j] == temp_k)
-                {
-                    check = true;
-                }
-            }
-        }
-
-        check = false;
-        
-        temp_k.x = king.x;
-        temp_k.y = king.y - 1;
-
-        for (i = 0; i < k.size() && !check; ++i)
-        {
-            for (j = 0; j < k[i].range.size() && !check; ++j)
-            {
-                // in check?
-                if (k[i].range[j] == temp_k)
-                {
-                    check = true;
-                }
-            }
-        }
-
-        check = false;
-        
-        temp_k.x = king.x + 1;
-        temp_k.y = king.y + 1;
-
-        for (i = 0; i < k.size() && !check; ++i)
-        {
-            for (j = 0; j < k[i].range.size() && !check; ++j)
-            {
-                // in check?
-                if (k[i].range[j] == temp_k)
-                {
-                    check = true;
-                }
-            }
-        }
-
-        check = false;
-        
-        temp_k.x = king.x + 1;
-        temp_k.y = king.y - 1;
-
-        for (i = 0; i < k.size() && !check; ++i)
-        {
-            for (j = 0; j < k[i].range.size() && !check; ++j)
-            {
-                // in check?
-                if (k[i].range[j] == temp_k)
-                {
-                    check = true;
-                }
-            }
-        }
-
-        check = false;
-        
-        temp_k.x = king.x - 1;
-        temp_k.y = king.y + 1;
-
-        for (i = 0; i < k.size() && !check; ++i)
-        {
-            for (j = 0; j < k[i].range.size() && !check; ++j)
-            {
-                // in check?
-                if (k[i].range[j] == temp_k)
-                {
-                    check = true;
-                }
-            }
-        }
-
-        check = false;
-        
-        temp_k.x = king.x - 1;
-        temp_k.y = king.y - 1;
-
-        for (i = 0; i < k.size() && !check; ++i)
-        {
-            for (j = 0; j < k[i].range.size() && !check; ++j)
-            {
-                // in check?
-                if (k[i].range[j] == temp_k)
-                {
-                    check = true;
-                }
-            }
-        }
 
         if (check)
             cout << "YES";
@@ -317,9 +162,11 @@ int main()
     return 0;
 }
 
+
+// overloaded operator functions
 bool coords::operator==(coords &c)
 {
-    return ((x == c.x && y == c.y));
+    return (x == c.x && y == c.y);
 }
 
 void coords::operator=(coords &c)
