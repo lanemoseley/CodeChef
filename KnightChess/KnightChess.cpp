@@ -56,8 +56,10 @@ using namespace std;
 
 // structure for holding the coordinates of a given piece
 struct coords{
-		int x;
-		int y;
+	int x;
+	int y;
+
+	bool operator==(coords &c);
 };
 
 // structure for holding the knight's location and range of movement
@@ -67,14 +69,13 @@ public:
 	theKnight(int x = 0, int y = 0);
 	~theKnight();
 
-	vector<coords> getMoves();
+	vector<coords> possible_moves;
 
 private:
 	int max_choices = 8;
 	int range[8][2] = { {2, 1}, {2, -1}, {-2, 1}, {-2, -1}, {1, 2}, {1, -2}, {-1, 2}, {-1, -2} };
 
 	coords pos;
-	vector<coords> possible_moves;
 };
 
 // structure for holding the king's location and range of movement
@@ -84,16 +85,13 @@ public:
 	theKing(int x = 0, int y = 0);
 	~theKing();
 
-	vector<coords> getMoves();
-	bool inCheck( vector<coords> threats );
-	bool getUnchecked( vector<coords> threats );
+	vector<coords> possible_moves;
 
 private:
 	int max_choices = 8;
 	int range[8][2] = { {0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1} };
 
 	coords pos;
-	vector<coords> possible_moves;
 };
 
 
@@ -101,10 +99,11 @@ private:
 
 int main()
 {
-	unsigned int i;
+	unsigned int i, j;
     int cases, num, temp_x, temp_y;
 	vector<theKnight> knights;
-	bool in_check, still_in_check;
+	vector<coords> kings_moves, invalid_squares;
+	bool is_valid;
 	
     cin >> cases;
     
@@ -133,29 +132,34 @@ int main()
 		// initializing king
 		theKing kg(temp_x, temp_y);
 
-		in_check = false;
-		for (i = 0; i < knights.size() && !in_check; ++i)
-        {
-			in_check = kg.inCheck(knights[i].getMoves());
-        }
-
-		if (in_check)
+		// gathering all invalid squares
+		for (i = 0; i < knights.size(); ++i)
 		{
-			still_in_check = true;
-
-			for (i = 0; i < knights.size() && still_in_check; ++i)
+			for (j = 0; j < knights[i].possible_moves.size(); ++j)
 			{
-				still_in_check = kg.getUnchecked(knights[i].getMoves());
+				invalid_squares.push_back(knights[i].possible_moves[j]);
 			}
-
-			if (still_in_check)
-				cout << "YES" << endl;
-			else
-				cout << "NO" << endl;
 		}
-		
-		else
+
+		is_valid = false;
+
+		for (i = 0; i < kg.possible_moves.size() && !is_valid; ++i)
+		{
+			is_valid = true;
+			for (j = 0; j < invalid_squares.size(); ++j)
+			{
+				if (invalid_squares[j] == kg.possible_moves[i])
+				{
+					// move invalid
+					is_valid = false;
+				}
+			}
+		}
+
+		if (is_valid)
 			cout << "NO" << endl;
+		else
+			cout << "YES" << endl;
     }
 
     return 0;
@@ -187,13 +191,6 @@ theKnight::~theKnight()
 
 }
 
-vector<coords> theKnight::getMoves()
-{
-	return possible_moves;
-}
-
-
-
 
 // king class functions
 theKing::theKing(int x, int y)
@@ -218,40 +215,9 @@ theKing::~theKing()
 
 }
 
-vector<coords> theKing::getMoves()
+
+// overloaded operator for coords struct
+bool coords::operator==(coords &c)
 {
-	return possible_moves;
-}
-
-bool theKing::inCheck(vector<coords> threats)
-{
-	unsigned int i;
-
-	for (i = 0; i < threats.size(); ++i)
-    {
-        if (threats[i].x == pos.x && threats[i].y == pos.y)
-        {
-			return true;
-        }
-    }
-
-	return false;
-}
-
-bool theKing::getUnchecked(vector<coords> threats)
-{
-	unsigned int i, j;
-	
-	for (i = 0; i < possible_moves.size(); ++i)
-	{
-		for (j = 0; j < threats.size(); ++j)
-		{
-			if (threats[j].x == possible_moves[i].x && threats[j].y == possible_moves[i].y)
-			{
-				return true;
-			}
-		}
-	}
-
-	return false;
+	return (x == c.x && y == c.y);
 }
