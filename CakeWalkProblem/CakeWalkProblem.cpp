@@ -69,41 +69,42 @@ Explanation:
 */
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 int main()
 {
-	int cases, count = 0;
-	unsigned int i, j;
-	string temp;
+    int cases, count, i, j, temp;
 
 	cin >> cases;
 
-	while (cases--)
+	while (cases)
 	{
-		getline(cin, temp);
+        count = 0;
+
 		for (i = 0; i < 10; ++i)
 		{
-			for (j = 0; j < temp.size(); ++j)
+            for (j = 0; j < 10; ++j)
 			{
-				if (isdigit(temp[j]) && temp[j] - 48 < 31)
+                cin >> temp;
+
+				if (temp < 31)
 				{
 					++count;
 				}
 			}
 		}
 
-		cout << endl;
 		if (count > 59)
-			{
-				cout << "yes" << endl;
-			}
+		{
+			cout << "yes" << endl;
+		}
 		else
 		{
 			cout << "no" << endl;
 		}
+
+        --cases;
 	}
 
 	return 0;
