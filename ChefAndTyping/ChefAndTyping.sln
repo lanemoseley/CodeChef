@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ChefAndTyping", "ChefAndTyping.pyproj", "{E8F9AF09-6D18-41DC-A427-F8160B079044}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8F9AF09-6D18-41DC-A427-F8160B079044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8F9AF09-6D18-41DC-A427-F8160B079044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3880AC07-D0C8-4818-8A78-C918515FB2DC}
+	EndGlobalSection
+EndGlobal
