@@ -40,64 +40,54 @@ Example Output:
 61
 
  */
+
 import java.util.Scanner
 
-fun main(args: Array<String>) {
-    val reader = Scanner(System.`in`)
-    val l_hand = arrayOf('d', 'f')
-    val r_hand = arrayOf('j', 'k')
+fun main( ) {
+    val reader = Scanner( System.`in` )
 
-    var cases:Int = reader.nextInt()
-    var numWords:Int = reader.nextInt()
+    var cases:Int = reader.nextInt()     // # of test cases
+    var numWords:Int                     // # of words in the test case
+    var words = mutableListOf<String>()  // list of words
+    var times = mutableListOf<Int>()     // list of times to type each word
+    var newWord:String                   // variable to store word until it is added to list
 
-    while (cases >= 0) {
-        var words = arrayOfNulls<String>(numWords)
-        var times = arrayOfNulls<Int>(numWords)
+    while ( cases > 0 ) {
+        numWords = reader.nextInt()      // get number of words in test case
+        words.clear()                    // clear both lists for each test case
+        times.clear()
 
-        var i = 0
-        for (i in 0 until numWords) {
-            var newWord = readLine()
-            var dup = false
+        for ( i in 0 until numWords ) {
+            newWord = readLine()!!
 
-            if (newWord in words) {
-                println("True")
+            // if the word has already been typed, new time = 1/2 the first time
+            if ( newWord in words ) {
+                times.add( times[ words.indexOf( newWord ) ] / 2 )
+                words.add( newWord )
             }
+
+            // if word has not already been typed calculate time taken to type word
             else {
-                println("False")
+                words.add( newWord )
+                times.add( 2 )
+
+                for ( j in 1 until words[ i ].count() ) {
+                    times[ i ] += 2
+
+                    if ( ( words[ i ][ j ] == 'd' || words[ i ][ j ] == 'f' ) and ( words[ i ][ j - 1 ] == 'd' || words[ i ][ j - 1 ] == 'f' ) ) {
+                        times[ i ] += 2
+                    }
+
+                    else if ( ( words[ i ][ j ] == 'j' || words[ i ][ j ] == 'k' ) and ( words[ i ][ j - 1 ] == 'j' || words[ i ][ j - 1 ] == 'k' ) ) {
+                        times[ i ] += 2
+                    }
+                }
             }
 
         }
 
+        println( times.sum() )
+
         cases -= 1
     }
-
 }
-
-    /*
-    if new_word in words:
-    dup = True
-    times.append( times[ words.index( new_word ) ] / 2 )
-
-    # add word to list
-            words.append( new_word )
-
-    # if no duplicate found, assign a new time value to the word
-    if not( dup ):
-    # add word to list
-            words.append( new_word )
-
-    # adding time for first letter
-            times.append( 2 )
-
-    # adding time for following letters
-            for j in range( 1, len( words[ i ] ) ):
-    times[ i ] += 2
-
-    if ( words[ i ][ j ] in l_hand ) and ( words[ i ][ j - 1 ] in l_hand ):
-    times[ i ] += 2
-
-    elif ( words[ i ][ j ] in r_hand ) and ( words[ i ][ j - 1 ] in r_hand ):
-    times[ i ] += 2
-
-    print( int( sum( times ) ) )
-}*/
