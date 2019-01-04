@@ -40,7 +40,7 @@ Example Output:
 61
 
  */
-package com.company;
+package com.company.Beginner;
 
 import java.util.ArrayList;
 import java.util.Scanner;
