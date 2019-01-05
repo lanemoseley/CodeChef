@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Beginner\ChefAndTyping.cpp">
+    <ClCompile Include="Beginner\FibonacciString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
