@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e7b54ab0-593b-43f7-962f-a92553eadf27</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Beginner_ChefAndTyping.py</StartupFile>
+    <StartupFile>Beginner_StrikeOrSpare.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,9 +24,12 @@
   </PropertyGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|2.7" />
+    <InterpreterReference Include="Global|PythonCore|3.6" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Beginner_ChefAndTyping.py" />
+    <Compile Include="Beginner_StrikeOrSpare.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
